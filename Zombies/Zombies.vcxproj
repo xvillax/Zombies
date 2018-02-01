@@ -77,6 +77,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -98,6 +101,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -115,6 +119,52 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Blondie\Camera\Camera2D.h" />
+    <ClInclude Include="Blondie\InputManager\Inputmanager.h" />
+    <ClInclude Include="Blondie\Shader\shader.h" />
+    <ClInclude Include="Blondie\Sprie2D\Sprite2D.h" />
+    <ClInclude Include="Blondie\SpriteBatch\SpriteBatch.h" />
+    <ClInclude Include="Blondie\Textures\GLtexture.h" />
+    <ClInclude Include="Blondie\Textures\PecoPng.h" />
+    <ClInclude Include="Blondie\Textures\TextureLoader.h" />
+    <ClInclude Include="Blondie\Timers\Timing.h" />
+    <ClInclude Include="Blondie\Utils\IOmanager.h" />
+    <ClInclude Include="Blondie\Utils\Printerror.h" />
+    <ClInclude Include="Blondie\Utils\ReSourceManager.h" />
+    <ClInclude Include="Blondie\Utils\TextureCache.h" />
+    <ClInclude Include="Blondie\Utils\VertexStruct.h" />
+    <ClInclude Include="Blondie\Window\GameWindow.h" />
+    <ClInclude Include="MainGame.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Blondie\Camera\Camera.cpp" />
+    <ClCompile Include="Blondie\InputManager\Inputmamager.cpp" />
+    <ClCompile Include="Blondie\Shader\shader.cpp" />
+    <ClCompile Include="Blondie\Sprie2D\Sprite2D.cpp" />
+    <ClCompile Include="Blondie\SpriteBatch\SpriteBatch.cpp" />
+    <ClCompile Include="Blondie\Textures\PecoPng.cpp" />
+    <ClCompile Include="Blondie\Textures\TextureLoader.cpp" />
+    <ClCompile Include="Blondie\Timers\Timing.cpp" />
+    <ClCompile Include="Blondie\Utils\IOmanager.cpp" />
+    <ClCompile Include="Blondie\Utils\ResourceManager.cpp" />
+    <ClCompile Include="Blondie\Utils\TextureCache.cpp" />
+    <ClCompile Include="Blondie\Window\GameWindow.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainGame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\level1.txt" />
+    <Text Include="Textures\credits.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\textureShading.frag" />
+    <None Include="Shaders\textureShading.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\circle.png" />
+    <Image Include="Textures\glass.png" />
+    <Image Include="Textures\light_bricks.png" />
+    <Image Include="Textures\red_bricks.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
