@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Agents\Agents.h" />
     <ClInclude Include="Blondie\Camera\Camera2D.h" />
     <ClInclude Include="Blondie\InputManager\Inputmanager.h" />
     <ClInclude Include="Blondie\Shader\shader.h" />
@@ -134,9 +135,14 @@
     <ClInclude Include="Blondie\Utils\TextureCache.h" />
     <ClInclude Include="Blondie\Utils\VertexStruct.h" />
     <ClInclude Include="Blondie\Window\GameWindow.h" />
+    <ClInclude Include="Agents\Human.h" />
+    <ClInclude Include="Levels\Levels.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Agents\Zombie.h" />
+    <ClInclude Include="Agents\Player.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Agents\Agents.cpp" />
     <ClCompile Include="Blondie\Camera\Camera.cpp" />
     <ClCompile Include="Blondie\InputManager\Inputmamager.cpp" />
     <ClCompile Include="Blondie\Shader\shader.cpp" />
@@ -149,8 +155,12 @@
     <ClCompile Include="Blondie\Utils\ResourceManager.cpp" />
     <ClCompile Include="Blondie\Utils\TextureCache.cpp" />
     <ClCompile Include="Blondie\Window\GameWindow.cpp" />
+    <ClCompile Include="Agents\Human.cpp" />
+    <ClCompile Include="Levels\Levels.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Agents\Zombie.cpp" />
+    <ClCompile Include="Agents\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Levels\level1.txt" />
