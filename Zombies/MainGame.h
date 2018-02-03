@@ -5,6 +5,7 @@
 #include "Blondie\Shader\shader.h"
 #include "Blondie\Camera\Camera2D.h"
 #include "Blondie\InputManager\Inputmanager.h"
+#include "Levels\Levels.h"
 
 
 class MainGame
@@ -35,5 +36,7 @@ private:
 	BLONDIE::Shader _textureProgram; ///< The shader program
 	BLONDIE::InputManager _inputManager; ///< Handles input
     BLONDIE::Camera2D _camera; ///< Main Camera
+
+	std::vector<Levels*> m_levels;  // vector of all levels
 };
 

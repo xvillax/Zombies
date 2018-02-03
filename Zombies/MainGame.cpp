@@ -12,7 +12,8 @@ MainGame::~MainGame()
 }
 
 void MainGame::run() {
-	// Empty
+	//m_levels.push_back(new Levels("Levels/level1.txt"));
+	//system("pause");
 }
 
 void MainGame::initSystems() {
@@ -21,7 +22,7 @@ void MainGame::initSystems() {
 
 void MainGame::initShaders() {
     // Compile our color shader
-	_textureProgram.CreateShaders("Resources/Shaders/vertexShader.vs", "Resources/Shaders/fragmentShader.fs");
+	_textureProgram.CreateShaders("Shaders/vertexShader.vs", "Shaders/fragmentShader.fs");
 	_textureProgram.AddAttrib("vertexPosition");
 	_textureProgram.AddAttrib("vertexColor");
 	_textureProgram.AddAttrib("vertexUV");
