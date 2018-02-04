@@ -5,6 +5,6 @@ class Human :
 {
 public:
 	Human();
-	~Human();
+	virtual ~Human();
 };
 

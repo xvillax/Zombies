@@ -27,6 +27,8 @@ private:
     /// Initializes the shaders
     void initShaders();
 
+	void initLevel();
+
     /// Main game loop for the program
     void gameLoop();
     /// Handles input processing

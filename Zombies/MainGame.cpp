@@ -20,6 +20,7 @@ MainGame::~MainGame()
 void MainGame::run() {
 	
 	initSystems();
+	initLevel();
 	gameLoop();
 }
 
@@ -29,8 +30,6 @@ void MainGame::initSystems() {
 	m_window.Create("Zombies", WIDTH, HEIGHT, 0);
 	initShaders();
 	_camera.init(WIDTH, HEIGHT);
-	//Load lvl one
-	m_levels.push_back(new Levels("Levels/level1.txt"));
 }
 
 void MainGame::initShaders()
@@ -42,6 +41,12 @@ void MainGame::initShaders()
 	_textureProgram.AddAttrib("vertexColor");
 	_textureProgram.AddAttrib("vertexUV");
 	_textureProgram.LinkShaders();
+}
+
+void MainGame::initLevel()
+{
+	//Load lvl one
+	m_levels.push_back(new Levels("Levels/level1.txt"));
 }
 
 void MainGame::gameLoop() {

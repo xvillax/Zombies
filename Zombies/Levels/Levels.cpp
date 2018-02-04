@@ -27,7 +27,7 @@ Levels::Levels(const std::string& filename)
 	m_spritebatch.Begin();
 	glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
 	BLONDIE::Color color = { 255,255,255,255 };
-	BLONDIE::Color pcolor = { 100,55,255,255 };
+	
 	//render tiles
 	for (unsigned int y = 0; y < m_lvlData.size(); y++) {
 		for (unsigned int x = 0; x < m_lvlData[y].size(); x++) {
@@ -40,37 +40,45 @@ Levels::Levels(const std::string& filename)
 			switch (tile)
 			{
 			case 'B':
-			case '@':
-				
+			case '@': {
+
 				m_playerPosStart.x = x * TILEWIDTH;
 				m_playerPosStart.y = y * TILEHEIGHT;
-				m_spritebatch.Draw(destRect, uvRect,
-					BLONDIE::ResourceManager::getTexture("Textures/circle.png").Id,
-					0.0f, pcolor);
 				break;
-			case 'R':
+			}
+			case 'R': {
+
 				m_spritebatch.Draw(destRect, uvRect,
 					BLONDIE::ResourceManager::getTexture("Textures/red_bricks.png").Id,
 					0.0f, color);
 				break;
-			case 'L':
+			}
+			case 'L': {
+
 				m_spritebatch.Draw(destRect, uvRect,
 					BLONDIE::ResourceManager::getTexture("Textures/light_bricks.png").Id,
 					0.0f, color);
 				break;
+			}
 			case '.':
 				break;
-			case 'G':
+			case 'G': {
+
 				m_spritebatch.Draw(destRect, uvRect,
 					BLONDIE::ResourceManager::getTexture("Textures/glass.png").Id,
 					0.0f, color);
 				break;
-			case 'Z':
+			}
+			case 'Z': {
+
 				m_zombiePosStart.emplace_back(x * TILEWIDTH, y * TILEHEIGHT);
 				break;
-			default:
+			}
+			default: {
+
 				std::printf("unexpected symbol %c at (%d,%d)", tile, x, y);
 				break;
+			}
 			}
 		}
 

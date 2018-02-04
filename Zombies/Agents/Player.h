@@ -6,5 +6,7 @@ class Player :
 public:
 	Player();
 	~Player();
+	void init(float speed, glm::vec2 pos);
+	void update();
 };
 
