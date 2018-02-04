@@ -26,11 +26,11 @@ namespace BLONDIE
 			//insert into the map 
 			m_textureMap.insert(make_pair(texturepath, newTexture));
 
-			std::cout << "Loaded Texture" << std::endl;
+			//std::cout << "Loaded Texture" << std::endl;
 			return newTexture;
 		}
 		// if the texture hase been stored just return the texture
-		std::cout << "used Cached Texture" << std::endl;
+		//std::cout << "used Cached Texture" << std::endl;
 		return map_itter->second;
 	}
 }

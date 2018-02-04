@@ -138,6 +138,7 @@
     <ClInclude Include="Blondie\Utils\VertexStruct.h" />
     <ClInclude Include="Blondie\Window\GameWindow.h" />
     <ClInclude Include="Agents\Human.h" />
+    <ClInclude Include="Blondie\Window\Blondie.h" />
     <ClInclude Include="Levels\Levels.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Agents\Zombie.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Blondie\Utils\TextureCache.cpp" />
     <ClCompile Include="Blondie\Window\GameWindow.cpp" />
     <ClCompile Include="Agents\Human.cpp" />
+    <ClCompile Include="Blondie\Window\Blondie.cpp" />
     <ClCompile Include="Levels\Levels.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />

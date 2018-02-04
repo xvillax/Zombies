@@ -47,7 +47,7 @@ namespace BLONDIE
 		std::printf("***   OpenGL Version: %s  *** \n", glGetString(GL_VERSION));
 
 		//set the background color
-		glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+		glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
 
 		//enable/disable  V-Sync
 		SDL_GL_SetSwapInterval(1);

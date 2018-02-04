@@ -1,28 +1,43 @@
 #include "MainGame.h"
+#include "Blondie\Window\Blondie.h"
 #include <SDL2/SDL.h>
+#include "Blondie/Timers/Timing.h"
 
 
-MainGame::MainGame(){
-    // Empty
+MainGame::MainGame()
+    :m_gameState(GameState::PLAY),
+	m_fps(0),
+	m_currentlvl(0)
+{
 }
 
 MainGame::~MainGame() 
 {
-	// Empty
+	for (unsigned int i = 0; i < m_levels.size(); i++)
+		delete m_levels[i];
 }
 
 void MainGame::run() {
-	//m_levels.push_back(new Levels("Levels/level1.txt"));
-	//system("pause");
+	
+	initSystems();
+	gameLoop();
 }
 
 void MainGame::initSystems() {
-	// Empty
+
+	BLONDIE::Init();
+	m_window.Create("Zombies", WIDTH, HEIGHT, 0);
+	initShaders();
+	_camera.init(WIDTH, HEIGHT);
+	//Load lvl one
+	m_levels.push_back(new Levels("Levels/level1.txt"));
 }
 
-void MainGame::initShaders() {
+void MainGame::initShaders()
+{
+
     // Compile our color shader
-	_textureProgram.CreateShaders("Shaders/vertexShader.vs", "Shaders/fragmentShader.fs");
+	_textureProgram.CreateShaders("Shaders/textureShading.vert", "Shaders/textureShading.frag");
 	_textureProgram.AddAttrib("vertexPosition");
 	_textureProgram.AddAttrib("vertexColor");
 	_textureProgram.AddAttrib("vertexUV");
@@ -30,7 +45,20 @@ void MainGame::initShaders() {
 }
 
 void MainGame::gameLoop() {
-	// Empty
+	BLONDIE::FpsLimiter fpsLimiter;
+	fpsLimiter.setMaxFps(60);
+	
+	while (m_gameState == GameState::PLAY)
+	{
+		fpsLimiter.begin();
+
+		processInput();
+		_camera.upDate();
+
+		drawGame();
+
+		fpsLimiter.end();
+	}
 }
 
 void MainGame::processInput() {
@@ -68,9 +96,21 @@ void MainGame::drawGame() {
     glClearDepth(1.0);
     // Clear the color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+	_textureProgram.Use();
 	//Draw code goes here
+	glActiveTexture(GL_TEXTURE0);
 
+	//make sure shader uses Texture 0
+	GLint textureUniform = _textureProgram.GetUniformLocation("mySampler");
+	glUniform1i(textureUniform, 0);
+
+	glm::mat4 projectionMatrix = _camera.getcameraMatrix();
+	GLint pUniform = _textureProgram.GetUniformLocation("transformationMatrix");
+	glUniformMatrix4fv(pUniform, 1, GL_FALSE, &projectionMatrix[0][0]);
+
+	//draw the level
+	m_levels[m_currentlvl]->Draw();
+	_textureProgram.Unuse();
 	//Swap our buffer and draw everything to the screen!
-	_window.SwapBuffer();
+	m_window.SwapBuffer();
 }

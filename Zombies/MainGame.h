@@ -7,7 +7,11 @@
 #include "Blondie\InputManager\Inputmanager.h"
 #include "Levels\Levels.h"
 
-
+enum class GameState
+{
+	PLAY,
+	EXIT
+};
 class MainGame
 {
 public:
@@ -32,11 +36,15 @@ private:
 
 private:
     /// Member Variables
-    BLONDIE::GameWindow _window; ///< The game window
+    BLONDIE::GameWindow m_window; ///< The game window
 	BLONDIE::Shader _textureProgram; ///< The shader program
 	BLONDIE::InputManager _inputManager; ///< Handles input
     BLONDIE::Camera2D _camera; ///< Main Camera
-
+	GameState m_gameState;
+	int m_fps;
+	int m_currentlvl;
+	static constexpr int WIDTH = 1024;
+	static constexpr int HEIGHT = 768;
 	std::vector<Levels*> m_levels;  // vector of all levels
 };
 
