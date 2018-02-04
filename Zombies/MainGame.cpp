@@ -47,6 +47,9 @@ void MainGame::initLevel()
 {
 	//Load lvl one
 	m_levels.push_back(new Levels("Levels/level1.txt"));
+	m_currentlvl = 0;
+
+	m_player
 }
 
 void MainGame::gameLoop() {

@@ -6,6 +6,8 @@
 #include "Blondie\Camera\Camera2D.h"
 #include "Blondie\InputManager\Inputmanager.h"
 #include "Levels\Levels.h"
+#include "Agents\Human.h"
+#include "Agents\Player.h"
 
 enum class GameState
 {
@@ -38,15 +40,18 @@ private:
 
 private:
     /// Member Variables
+	int m_fps;
+	int m_currentlvl;
+	static constexpr int WIDTH = 1024;
+	static constexpr int HEIGHT = 768;
+
     BLONDIE::GameWindow m_window; ///< The game window
 	BLONDIE::Shader _textureProgram; ///< The shader program
 	BLONDIE::InputManager _inputManager; ///< Handles input
     BLONDIE::Camera2D _camera; ///< Main Camera
 	GameState m_gameState;
-	int m_fps;
-	int m_currentlvl;
-	static constexpr int WIDTH = 1024;
-	static constexpr int HEIGHT = 768;
+	Player* m_Player;
 	std::vector<Levels*> m_levels;  // vector of all levels
+	std::vector<Human*> m_humans;
 };
 

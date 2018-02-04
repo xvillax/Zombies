@@ -16,14 +16,15 @@ public:
 	~Levels();
 
 	void Draw();
-
+	glm::vec2 getPlayerStartPos() const { return m_playerPosStart; }
+	const std::vector<glm::vec2>& getZombieStartPos() const { return m_zombiePosStart; }
 private:
 	int m_numHumans;
 	std::vector<std::string> m_lvlData;
 	BLONDIE::SpriteBatch m_spritebatch;
 
-	glm::ivec2 m_playerPosStart;
-	std::vector<glm::ivec2> m_zombiePosStart;
-	std::vector<glm::ivec2> m_humanPosStart;
+	glm::vec2 m_playerPosStart;
+	std::vector<glm::vec2> m_zombiePosStart;
+	std::vector<glm::vec2> m_humanPosStart;
 };
 
