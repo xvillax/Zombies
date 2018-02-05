@@ -2,12 +2,13 @@
 #include <glm\glm.hpp>
 #include "Blondie\SpriteBatch\SpriteBatch.h"
 
-const float AGENT_WIDTH = 60;
+const float AGENT_WIDTH = 32;
 class Agents
 {
 public:
 	Agents();
 	virtual ~Agents();
+	virtual void update() = 0;
 	void draw(BLONDIE::SpriteBatch& spriteBatch);
 protected:
 	glm::vec2 m_position;

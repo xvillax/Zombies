@@ -6,5 +6,6 @@ class Zombie :
 public:
 	Zombie();
 	~Zombie();
+	virtual void update();
 };
 

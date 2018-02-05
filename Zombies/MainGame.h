@@ -6,8 +6,8 @@
 #include "Blondie\Camera\Camera2D.h"
 #include "Blondie\InputManager\Inputmanager.h"
 #include "Levels\Levels.h"
-#include "Agents\Human.h"
 #include "Agents\Player.h"
+#include "Blondie\SpriteBatch\SpriteBatch.h"
 
 enum class GameState
 {
@@ -33,6 +33,10 @@ private:
 
     /// Main game loop for the program
     void gameLoop();
+
+	//updates agents
+	void updateAgents();
+
     /// Handles input processing
     void processInput();
     /// Renders the game
@@ -49,9 +53,10 @@ private:
 	BLONDIE::Shader _textureProgram; ///< The shader program
 	BLONDIE::InputManager _inputManager; ///< Handles input
     BLONDIE::Camera2D _camera; ///< Main Camera
+	BLONDIE::SpriteBatch m_agentsSpritebatch;  // draw all agents
 	GameState m_gameState;
 	Player* m_Player;
 	std::vector<Levels*> m_levels;  // vector of all levels
-	std::vector<Human*> m_humans;
+	std::vector<Human*> m_humans;  // vector of all Humans
 };
 

@@ -7,5 +7,6 @@ class Human :
 public:
 	Human();
 	virtual ~Human();
+	virtual void update();
 };
 

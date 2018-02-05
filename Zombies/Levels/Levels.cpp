@@ -40,6 +40,7 @@ Levels::Levels(const std::string& filename)
 			switch (tile)
 			{
 			case 'B':
+				break;
 			case '@': {
 
 				m_playerPosStart.x = x * TILEWIDTH;

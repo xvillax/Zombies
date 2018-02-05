@@ -4,8 +4,8 @@
 #include "Blondie\SpriteBatch\SpriteBatch.h"
 
 
-const int TILEWIDTH = 32;
-const int TILEHEIGHT = 32;
+const int TILEWIDTH = 64;
+const int TILEHEIGHT = 64;
 
 class Levels
 {

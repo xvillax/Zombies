@@ -7,7 +7,8 @@
 MainGame::MainGame()
     :m_gameState(GameState::PLAY),
 	m_fps(0),
-	m_currentlvl(0)
+	m_currentlvl(0),
+	m_Player(nullptr)
 {
 }
 
@@ -29,6 +30,7 @@ void MainGame::initSystems() {
 	BLONDIE::Init();
 	m_window.Create("Zombies", WIDTH, HEIGHT, 0);
 	initShaders();
+	m_agentsSpritebatch.init();
 	_camera.init(WIDTH, HEIGHT);
 }
 
@@ -49,7 +51,9 @@ void MainGame::initLevel()
 	m_levels.push_back(new Levels("Levels/level1.txt"));
 	m_currentlvl = 0;
 
-	m_player
+	m_Player = new Player;
+	m_Player->init(1.0f, m_levels[m_currentlvl]->getPlayerStartPos(), &_inputManager);
+	m_humans.push_back(m_Player);
 }
 
 void MainGame::gameLoop() {
@@ -61,12 +65,21 @@ void MainGame::gameLoop() {
 		fpsLimiter.begin();
 
 		processInput();
+
+
+
 		_camera.upDate();
 
 		drawGame();
 
 		fpsLimiter.end();
 	}
+}
+
+void MainGame::updateAgents()
+{
+	for (unsigned int i = 0; i < m_humans.size(); i++)
+		m_humans[i]->update();
 }
 
 void MainGame::processInput() {
@@ -118,6 +131,15 @@ void MainGame::drawGame() {
 
 	//draw the level
 	m_levels[m_currentlvl]->Draw();
+
+	//draw agents
+	m_agentsSpritebatch.Begin();
+	//draw the Humans
+	for(unsigned int i= 0; i < m_humans.size(); i++)
+	 m_humans[i]->draw(m_agentsSpritebatch);
+	m_agentsSpritebatch.End();
+	m_agentsSpritebatch.renderBatch();
+
 	_textureProgram.Unuse();
 	//Swap our buffer and draw everything to the screen!
 	m_window.SwapBuffer();

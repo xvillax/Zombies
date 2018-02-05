@@ -6,7 +6,9 @@ class Player :
 public:
 	Player();
 	~Player();
-	void init(float speed, glm::vec2 pos);
-	void update(BLONDIE::InputManager& inputManager);
+	void init(float speed, glm::vec2 pos, BLONDIE::InputManager* inputManager);
+	void update();
+private:
+	BLONDIE::InputManager* m_inputManager;
 };
 
