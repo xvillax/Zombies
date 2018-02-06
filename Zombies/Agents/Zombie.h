@@ -6,6 +6,8 @@ class Zombie :
 public:
 	Zombie();
 	~Zombie();
-	virtual void update();
+	virtual void update(const std::vector<std::string> & lvldata,
+		std::vector<Human*>& humans,
+		std::vector<Zombie*>& zombies);
 };
 

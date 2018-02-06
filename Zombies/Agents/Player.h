@@ -7,7 +7,10 @@ public:
 	Player();
 	~Player();
 	void init(float speed, glm::vec2 pos, BLONDIE::InputManager* inputManager);
-	void update();
+	void update(const std::vector<std::string> & lvldata,
+		std::vector<Human*>& humans,
+		std::vector<Zombie*>& zombies);
+	void tileColide(const std::vector<std::string> & lvldata);
 private:
 	BLONDIE::InputManager* m_inputManager;
 };

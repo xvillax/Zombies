@@ -1,5 +1,6 @@
 #include "Agents.h"
 #include "Blondie\Utils\ReSourceManager.h"
+#include "Levels\Levels.h"
 
 
 Agents::Agents()
@@ -23,4 +24,13 @@ void Agents::draw(BLONDIE::SpriteBatch & spriteBatch)
 	destRect.w = AGENT_WIDTH;
 
 	spriteBatch.Draw(destRect, uvRect, textureID, 0.0f, m_color);
+}
+
+void Agents::tileColide(const std::vector<std::string>& lvldata)
+{
+	std::vector<glm::vec2> collideTilePosition;
+	
+	// check the 4 corners
+	//first corner
+	glm::vec2 cornerpos = glm::vec2(m_position.x / (float)TILEWIDTH);
 }

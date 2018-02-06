@@ -7,6 +7,8 @@ class Human :
 public:
 	Human();
 	virtual ~Human();
-	virtual void update();
+	virtual void update(const std::vector<std::string> & lvldata,
+		std::vector<Human>& humans,
+		std::vector<Zombie>& zombies);
 };
 

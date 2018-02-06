@@ -20,7 +20,9 @@ void Player::init(float speed, glm::vec2 pos, BLONDIE::InputManager* inputManage
 	m_color = { 100,55,255,255 };
 }
 
-void Player::update()
+void Player::update(const std::vector<std::string> & lvldata,
+	std::vector<Human*>& humans,
+	std::vector<Zombie*>& zombies)
 {
 	if (m_inputManager->isKeyPressed(SDLK_w))
 	{
@@ -34,11 +36,17 @@ void Player::update()
 	else
 	if (m_inputManager->isKeyPressed(SDLK_a))
 	{
-		m_position.x += m_speed;
+		m_position.x -= m_speed;
 	}
 	else
 	if (m_inputManager->isKeyPressed(SDLK_d))
 	{
-		m_position.x -= m_speed;
+		m_position.x += m_speed;
 	}
 }
+
+void Player::tileColide(const std::vector<std::string>& lvldata)
+{
+}
+
+

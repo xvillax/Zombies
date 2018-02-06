@@ -11,6 +11,8 @@ Human::~Human()
 {
 }
 
-void Human::update()
+void Human::update(const std::vector<std::string> & lvldata,
+	std::vector<Human>& humans,
+	std::vector<Zombie>& zombies)
 {
 }
