@@ -43,6 +43,8 @@ void Player::update(const std::vector<std::string> & lvldata,
 	{
 		m_position.x += m_speed;
 	}
+
+	tileColide(lvldata);
 }
 
 void Player::tileColide(const std::vector<std::string>& lvldata)

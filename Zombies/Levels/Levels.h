@@ -18,6 +18,7 @@ public:
 	void Draw();
 	glm::vec2 getPlayerStartPos() const { return m_playerPosStart; }
 	const std::vector<glm::vec2>& getZombieStartPos() const { return m_zombiePosStart; }
+	const std::vector<std::string> getLevelData() const { return m_lvlData; }
 private:
 	int m_numHumans;
 	std::vector<std::string> m_lvlData;

@@ -42,7 +42,7 @@ Levels::Levels(const std::string& filename)
 			case 'B':
 				break;
 			case '@': {
-
+				m_lvlData[y][x] = '.'; //so we dont collide with a @
 				m_playerPosStart.x = x * TILEWIDTH;
 				m_playerPosStart.y = y * TILEHEIGHT;
 				break;
@@ -71,7 +71,7 @@ Levels::Levels(const std::string& filename)
 				break;
 			}
 			case 'Z': {
-
+				m_lvlData[y][x] = '.'; //so we dont collide with a Z
 				m_zombiePosStart.emplace_back(x * TILEWIDTH, y * TILEHEIGHT);
 				break;
 			}

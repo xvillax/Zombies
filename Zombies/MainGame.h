@@ -9,6 +9,8 @@
 #include "Agents\Player.h"
 #include "Blondie\SpriteBatch\SpriteBatch.h"
 
+class Zombie;
+
 enum class GameState
 {
 	PLAY,
@@ -44,10 +46,10 @@ private:
 
 private:
     /// Member Variables
-	int m_fps;
+	float m_fps;
 	int m_currentlvl;
-	static constexpr int WIDTH = 1024;
-	static constexpr int HEIGHT = 768;
+	static constexpr int SCREEN_WIDTH = 1024;
+	static constexpr int SCREEN_HEIGHT = 768;
 
     BLONDIE::GameWindow m_window; ///< The game window
 	BLONDIE::Shader _textureProgram; ///< The shader program
@@ -58,5 +60,6 @@ private:
 	Player* m_Player;
 	std::vector<Levels*> m_levels;  // vector of all levels
 	std::vector<Human*> m_humans;  // vector of all Humans
+	std::vector<Zombie*> m_zombies;  // vector of all Zombies
 };
 

@@ -19,6 +19,11 @@ public:
 	void tileColide(const std::vector<std::string>& lvldata);
 
 protected:
+	void checkTilePos(const std::vector<std::string>& lvldata,
+		              std::vector<glm::vec2>& collidetileposition,
+					  float x, float y);
+	void collideWithTile(glm::vec2 tilePos);
+	
 	glm::vec2 m_position;
 	BLONDIE::Color m_color;
 	float m_speed;

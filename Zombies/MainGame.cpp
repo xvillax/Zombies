@@ -2,6 +2,7 @@
 #include "Blondie\Window\Blondie.h"
 #include <SDL2/SDL.h>
 #include "Blondie/Timers/Timing.h"
+#include "Agents\Zombie.h"
 
 
 MainGame::MainGame()
@@ -28,10 +29,10 @@ void MainGame::run() {
 void MainGame::initSystems() {
 
 	BLONDIE::Init();
-	m_window.Create("Zombies", WIDTH, HEIGHT, 0);
+	m_window.Create("Zombies", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
 	initShaders();
 	m_agentsSpritebatch.init();
-	_camera.init(WIDTH, HEIGHT);
+	_camera.init(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 void MainGame::initShaders()
@@ -80,7 +81,8 @@ void MainGame::updateAgents()
 {
 	//update all Humans
 	for (unsigned int i = 0; i < m_humans.size(); i++)
-		m_humans[i]->update();
+		m_humans[i]->update(m_levels[m_currentlvl]-> getLevelData(),
+			m_humans, m_zombies);
 	//update Zombies
 }
 
@@ -139,6 +141,7 @@ void MainGame::drawGame() {
 	//draw the Humans
 	for(unsigned int i= 0; i < m_humans.size(); i++)
 	 m_humans[i]->draw(m_agentsSpritebatch);
+
 	m_agentsSpritebatch.End();
 	m_agentsSpritebatch.renderBatch();
 
