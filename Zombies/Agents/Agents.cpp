@@ -59,13 +59,13 @@ void Agents::tileColide(const std::vector<std::string>& lvldata)
 void Agents::checkTilePos(const std::vector<std::string>& lvldata, 
 						  std::vector<glm::vec2>& collidetileposition, float x, float y)
 {
-	//first corner
 	glm::vec2 cornerpos = glm::vec2(floor(x / (float)TILEWIDTH),
 									floor(y / (float)TILEWIDTH));
 
 	if (lvldata[cornerpos.y][cornerpos.x] != '.')
 	{
-		collidetileposition.push_back(cornerpos * (float)TILEWIDTH + glm::vec2((float)TILEWIDTH / 2.0f));
+		collidetileposition.push_back(cornerpos * (float)TILEWIDTH + 
+			                          glm::vec2((float)TILEWIDTH / 2.0f));
 	}
 }
 //AABB Colision
@@ -82,7 +82,7 @@ void Agents::collideWithTile(glm::vec2 tilePos)
 	float ydepth = MIN_DISTANCE - abs(distvec.y);
 	
 
-	if (xdepth > 0 || ydepth > 0)
+	if (xdepth > 0 || ydepth > 0) // True if colliding
 	{
 
 		if (std::max(xdepth, 0.0f) < std::max(ydepth, 0.0f))

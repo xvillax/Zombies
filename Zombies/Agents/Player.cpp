@@ -47,8 +47,4 @@ void Player::update(const std::vector<std::string> & lvldata,
 	tileColide(lvldata);
 }
 
-void Player::tileColide(const std::vector<std::string>& lvldata)
-{
-}
-
 

@@ -10,7 +10,7 @@ public:
 	void update(const std::vector<std::string> & lvldata,
 		std::vector<Human*>& humans,
 		std::vector<Zombie*>& zombies);
-	void tileColide(const std::vector<std::string> & lvldata);
+	
 private:
 	BLONDIE::InputManager* m_inputManager;
 };
