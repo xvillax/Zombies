@@ -1,5 +1,7 @@
 #pragma once
 #include "Human.h"
+#include "Blondie\InputManager\Inputmanager.h"
+
 class Player :
 	public Human
 {

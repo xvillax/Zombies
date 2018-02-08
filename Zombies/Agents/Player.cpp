@@ -1,7 +1,5 @@
 #include <SDL2\SDL.h>
 #include "Player.h"
-#include "Blondie\InputManager\Inputmanager.h"
-
 
 Player::Player()
 {
