@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "Blondie\Window\GameWindow.h"
 #include "Blondie\Shader\shader.h"
 #include "Blondie\Camera\Camera2D.h"

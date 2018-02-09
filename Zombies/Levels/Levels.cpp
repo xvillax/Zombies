@@ -17,6 +17,7 @@ Levels::Levels(const std::string& filename)
 
 	std::string tmp;
 	file >> tmp >> m_numHumans;
+	std::getline(file, tmp);
 	
 	//read in the rest of the lvl data
 	while (std::getline(file, tmp))

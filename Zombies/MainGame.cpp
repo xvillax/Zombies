@@ -3,7 +3,8 @@
 #include <SDL2/SDL.h>
 #include "Blondie/Timers/Timing.h"
 #include "Agents\Zombie.h"
-
+#include <random>
+#include <ctime>
 
 MainGame::MainGame()
     :m_gameState(GameState::PLAY),
@@ -55,6 +56,20 @@ void MainGame::initLevel()
 	m_Player = new Player;
 	m_Player->init(4.0f, m_levels[m_currentlvl]->getPlayerStartPos(), &_inputManager);
 	m_humans.push_back(m_Player);
+
+	static std::mt19937 randomEngine;
+	randomEngine.seed(time(nullptr));
+	static std::uniform_int_distribution<int> randX(2, m_levels[m_currentlvl]->getWidth() - 2);
+	static std::uniform_int_distribution<int> randY(2, m_levels[m_currentlvl]->getHeight() - 2);
+
+	const float HUMAN_SPEED = 1.0f;
+	//add all the Humans
+	for(int i = 0; i < m_levels[m_currentlvl]->getNumHumans(); i++)
+	{
+		m_humans.push_back(new Human);
+		glm::vec2 pos(randX(randomEngine) * TILEWIDTH, randY(randomEngine) * TILEWIDTH);
+		m_humans.back()->init(HUMAN_SPEED, pos);
+	}
 }
 
 void MainGame::gameLoop() {
