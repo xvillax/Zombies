@@ -58,7 +58,7 @@ void MainGame::initLevel()
 	m_humans.push_back(m_Player);
 
 	static std::mt19937 randomEngine;
-	randomEngine.seed(time(nullptr));
+	randomEngine.seed((int)time(nullptr));
 	static std::uniform_int_distribution<int> randX(2, m_levels[m_currentlvl]->getWidth() - 2);
 	static std::uniform_int_distribution<int> randY(2, m_levels[m_currentlvl]->getHeight() - 2);
 
