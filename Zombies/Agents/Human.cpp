@@ -1,8 +1,10 @@
 #include "Human.h"
 #include <random>
 #include <ctime>
+#include <glm\gtx\rotate_vector.hpp>
 
 Human::Human()
+	: m_frames(0)
 {
 }
 
@@ -16,8 +18,21 @@ void Human::update(const std::vector<std::string> & lvldata,
 					std::vector<Zombie*>& zombies)
 {
 	
+	static std::mt19937 randomEngine(time(nullptr));
+	static std::uniform_real_distribution<float> randRotate(-40.8f, 40.8f);
+
 	m_position += m_direction * m_speed;
-	tileColide(lvldata);
+	
+	if (m_frames == 100) 
+	{
+		m_direction = glm::rotate(m_direction, randRotate(randomEngine));
+		m_frames = 0;
+	}
+	else
+		m_frames++;
+
+	if(tileColide(lvldata))
+		m_direction = glm::rotate(m_direction, randRotate(randomEngine));
 }
 
 void Human::init(float speed, glm::vec2 pos)

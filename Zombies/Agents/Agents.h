@@ -2,9 +2,12 @@
 #include <glm\glm.hpp>
 #include "Blondie\SpriteBatch\SpriteBatch.h"
 
-const float AGENT_WIDTH = 32;
+const float AGENT_WIDTH = 32.0f;
+const float AGENT_RADIUS = AGENT_WIDTH / 2.0f;
 class Zombie;
 class Human;
+
+
 
 class Agents
 {
@@ -16,8 +19,8 @@ public:
 						std::vector<Zombie*>& zombies) = 0;
 	void draw(BLONDIE::SpriteBatch& spriteBatch);
 	glm::vec2 getPosition() const { return m_position; }
-	void tileColide(const std::vector<std::string>& lvldata);
-
+	bool tileColide(const std::vector<std::string>& lvldata);
+	bool colideWithAgent(Agents* agent);
 protected:
 	void checkTilePos(const std::vector<std::string>& lvldata,
 		              std::vector<glm::vec2>& collidetileposition,

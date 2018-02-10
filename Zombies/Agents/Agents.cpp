@@ -27,7 +27,7 @@ void Agents::draw(BLONDIE::SpriteBatch & spriteBatch)
 	spriteBatch.Draw(destRect, uvRect, textureID, 0.0f, m_color);
 }
 
-void Agents::tileColide(const std::vector<std::string>& lvldata)
+bool Agents::tileColide(const std::vector<std::string>& lvldata)
 {
 	std::vector<glm::vec2> collideTilePosition;
 	
@@ -49,18 +49,40 @@ void Agents::tileColide(const std::vector<std::string>& lvldata)
 		         m_position.x + AGENT_WIDTH, 
 		         m_position.y + AGENT_WIDTH);
 
+	if (collideTilePosition.size() == 0)
+		return false;
 	//do the collision
 	for (unsigned int i = 0; i < collideTilePosition.size(); i++)
 	{
 		collideWithTile(collideTilePosition[i]);
 	}
+	return true;
+}
+
+bool Agents::colideWithAgent(Agents* agent)
+{
+	const float MIN_DISTANCE = (AGENT_RADIUS * 2.0f);
+	glm::vec2 centerposA = m_position + glm::vec2(AGENT_RADIUS);
+	glm::vec2 centerposB =agent->getPosition() + glm::vec2(AGENT_RADIUS);
+	glm::vec2 distvec = centerposA - centerposB;
+
+	float distance = glm::length(distvec);
+	float collisionDepth = MIN_DISTANCE - distance;
+	if (collisionDepth > 0)// we have a collision
+	{
+		glm::vec2 collisionDepthvec = glm::normalize(distvec) * collisionDepth;
+		m_position += collisionDepthvec / 2.0f;
+		agent->m_position -= collisionDepthvec / 2.0f;
+		return true;
+	}
+	return false;
 }
 
 void Agents::checkTilePos(const std::vector<std::string>& lvldata, 
 						  std::vector<glm::vec2>& collidetileposition, float x, float y)
 {
-	glm::vec2 cornerpos = glm::vec2(floor(x / (float)TILEWIDTH),
-									floor(y / (float)TILEWIDTH));
+	glm::vec2 cornerpos = glm::vec2(floor(x / TILEWIDTH),
+									floor(y / TILEWIDTH));
 
 	if (cornerpos.x < 0 || cornerpos.x > lvldata[0].length() ||
 		cornerpos.y < 0 || cornerpos.y > lvldata.size())
@@ -69,15 +91,15 @@ void Agents::checkTilePos(const std::vector<std::string>& lvldata,
 	}
 	if (lvldata[cornerpos.y][cornerpos.x] != '.')
 	{
-		collidetileposition.push_back(cornerpos * (float)TILEWIDTH + 
-			                          glm::vec2((float)TILEWIDTH / 2.0f));
+		collidetileposition.push_back(cornerpos * TILEWIDTH + 
+			                          glm::vec2(TILEWIDTH / 2.0f));
 	}
 }
 //AABB Colision
 void Agents::collideWithTile(glm::vec2 tilePos)
 {
-	const float AGENT_RADIUS = (float)AGENT_WIDTH / 2.0f;
-	const float TILE_RADIUS = (float)TILEWIDTH / 2.0f;
+	
+	const float TILE_RADIUS = TILEWIDTH / 2.0f;
 	const float MIN_DISTANCE = AGENT_RADIUS + TILE_RADIUS;
 
 	glm::vec2 centerPlayerPos = m_position + glm::vec2(AGENT_RADIUS);
